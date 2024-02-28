@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
-import 'swiper/swiper-bundle.css'; // Make sure to import the Swiper bundle CSS
+import 'swiper/swiper-bundle.css';
 import { Image, Modal } from 'antd';
 
 const imageUrls = [
@@ -56,7 +56,6 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    // Automatically open and close modal for each image in the center after 2 seconds (same as Swiper autoplay delay)
     const interval = setInterval(() => {
       const swiperInstance = (document.querySelector('.mySwiper') as any)?.swiper;
       if (swiperInstance) {
@@ -65,10 +64,8 @@ const App: React.FC = () => {
         setTimeout(() => closeFullScreen(), 1000);
       }
     }, 2000);
-  
-    // Cleanup interval to avoid memory leaks
     return () => clearInterval(interval);
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, []);
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh' }}>
@@ -77,7 +74,7 @@ const App: React.FC = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={3}
-        loop
+        // loop
         coverflowEffect={{
           rotate: 60,
           stretch: 0,
